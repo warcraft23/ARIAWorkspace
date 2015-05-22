@@ -1,0 +1,40 @@
+!SESSION 2015-04-23 20:35:24.482 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.p2.operations 2 0 2015-04-23 20:38:20.431
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-23 20:38:20.431
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.431
+!MESSAGE "C/C++ Call Graph Visualization" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.431
+!MESSAGE "C/C++ Development Tools" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.431
+!MESSAGE "C/C++ Development Tools SDK" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.431
+!MESSAGE "C/C++ Library API Documentation Hover Help" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.431
+!MESSAGE "C/C++ Unit Testing Support" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.431
+!MESSAGE "Eclipse Java Development Tools" will be ignored because it is already installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 2 0 2015-04-23 20:38:20.466
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-04-23 20:38:20.466
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.466
+!MESSAGE "C/C++ Call Graph Visualization" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.466
+!MESSAGE "C/C++ Development Tools" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.466
+!MESSAGE "C/C++ Development Tools SDK" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.466
+!MESSAGE "C/C++ Library API Documentation Hover Help" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.467
+!MESSAGE "C/C++ Unit Testing Support" will be ignored because it is already installed.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-04-23 20:38:20.467
+!MESSAGE "Eclipse Java Development Tools" will be ignored because it is already installed.

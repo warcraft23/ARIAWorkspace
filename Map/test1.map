@@ -1,0 +1,10 @@
+2D-Map
+LineMinPos: -5480 -2600
+LineMaxPos: -2100 2140
+NumLines: 3
+LinesAreSorted: true
+LINES
+-5460 2060 -5480 -2380
+-5460 2140 -2101 2140
+-2100 2120 -2120 -2600
+DATA
