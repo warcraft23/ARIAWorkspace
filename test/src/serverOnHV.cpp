@@ -12,7 +12,7 @@
  * It also connects to the FV with WIFI and sends the command to control it.
  * In ArNetworking System,this program acts as a server to receive the signal from PC ,
  * control the HV,and control the FV.
- * Usage: ./serverOnHV -rh [hostname of FV] -rp [port of FV]
+ * Usage: ./serverOnHV -rhHV [hostname of HV] -rpHV [port of HV] -rhFV1 [hostname of FV1] -rpFV1 [port of FV1]
  */
 
 #include "Aria.h"
@@ -120,6 +120,7 @@ int main(int argc, char** argv) {
 
 	//set up parser
 	ArArgumentParser parser(&argc, argv);
+	ArArgumentParser argParser(&argc,argv);
 
 	//load default arguments
 	parser.loadDefaultArguments();
@@ -128,20 +129,43 @@ int main(int argc, char** argv) {
 	ArRobot robotHV, robotFV1;
 
 	//robotHV for HV
-	ArRobotConnector robotHVConnector(&parser, &robotHV);
+
+	//tcp connection for HV
+	ArTcpConnection tcpHVConn;
+
+	int portHV=8101;
+	const char* hostHV=argParser.checkParameterArgument("-rhHV");
+	if(!hostHV){
+		hostHV = "localhost";
+		portHV=8101;
+	}
+
+	//port Number
+	bool argSetHV = false;
+	argParser.checkParameterArgumentInteger("-rpHV",&portHV,&argSetHV);
+	if(!argSetHV) argParser.checkParameterArgumentInteger("-rrtpHV",&portHV);
+
+	tcpHVConn.open(hostHV,portHV);
+	robotHV.setDeviceConnection(&tcpHVConn);
+	if(!robotHV.blockingConnect()){
+			printf("Could not Connect to RobotHV !\n");
+	}
+
+	//ArRobotConnector robotHVConnector(&parser, &robotHV);
 
 	ArAnalogGyro gyo(&robotHV);
 
-	if (!robotHVConnector.connectRobot()) {
+	/*if (!robotHVConnector.connectRobot()) {
 		printf("Could not connect to robot... exiting\n");
 		exit(1);
-	}
+	}*/
 	ArDataLogger dataLogger(&robotHV, "dataLogHV.txt");
 	dataLogger.addToConfig(Aria::getConfig());
 
 	//server
 	ArServerBase serverOnHV;
-	ArLaserConnector laserHVConnector(&parser, &robotHV, &robotHVConnector);
+
+	//ArLaserConnector laserHVConnector(&parser, &robotHV, &robotHVConnector);
 	ArServerSimpleOpener simpleOpener(&parser);
 
 //	ArClientSwitchManager clientSwitchManager(&serverOnHV, &parser);
@@ -165,6 +189,9 @@ int main(int argc, char** argv) {
 	ArSonarDevice sonarDevHV;
 	robotHV.addRangeDevice(&sonarDevHV);
 
+
+
+
 	// modes for controlling robot movement
 	ArServerModeStop modeStop(&serverOnHV, &robotHV);
 	ArServerModeRatioDrive modeRatioDrive(&serverOnHV, &robotHV);
@@ -186,11 +213,11 @@ int main(int argc, char** argv) {
 	//          		RobotFV1
 	/////////////////////////////////////////////////////////////////////
 
-	ArArgumentParser argParser(&argc,argv);
+
 	int portFV1=8101;
 
-	//hostname
-	const char* hostFV1=argParser.checkParameterArgument("-rh");
+	//hostname of FV1
+	const char* hostFV1=argParser.checkParameterArgument("-rhFV1");
 	if(!hostFV1) {
 		hostFV1 = "localhost";
 		portFV1=8102;
@@ -198,7 +225,7 @@ int main(int argc, char** argv) {
 
 	//port number
 	bool argSet = false;
-	argParser.checkParameterArgumentInteger("-rp",&portFV1,&argSet);
+	argParser.checkParameterArgumentInteger("-rpFV1",&portFV1,&argSet);
 	if(!argSet) argParser.checkParameterArgumentInteger("-rrtp",&portFV1);
 
 	//tcp connection for FV1
